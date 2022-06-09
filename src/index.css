@@ -21,13 +21,18 @@ button {
   color: #ffffff;
 }
 
+.tombolmasuk{
+  margin-right: 123px;
+  border-radius: 7.5px;
+}
+
+
 input {
   background-color: #ffffff;
   border-radius: 7.5px;
   border: 1px solid #8e8e93;
   width: 500px;
-  height: 50px
-  ;
+  height: 50px;
 }
 
 input::placeholder {
