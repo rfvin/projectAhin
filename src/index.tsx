@@ -4,13 +4,13 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import masuk from './halaman/masuk';
+import inventaris from './halaman/inventaris';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  masuk()
+  inventaris()
 );
 
 // If you want to start measuring performance in your app, pass a function
