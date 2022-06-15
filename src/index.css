@@ -36,26 +36,12 @@ input::placeholder {
   font-weight: 500;
 }
 
-.sidenav {
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  background-color: #007aff;
-}
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 24px;
-  color: #ffffff;
-  display: block;
-  transition: 0.3s;
-}
 
 .active {
   background-color: #ffffff;
   color: #007aff;
-  border-radius: ;
+  border-radius: 75px;
 }
 
 
