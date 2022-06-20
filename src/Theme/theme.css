@@ -25,9 +25,12 @@
     margin-top: 10vh;
 }
 .theme-bottom-sidebar{
-    margin-top: 30vh;
 }
 
+.theme-title{
+    font-size: 50px;
+    font-weight: bold;
+}
 
 
 .theme-sidebar a {
