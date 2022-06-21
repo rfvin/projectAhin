@@ -9,14 +9,15 @@ import inventaris from './halaman/Inventaris/inventaris';
 import THEME from "./Theme/theme";
 import Login from './halaman/Login/masuk';
 import Admin from './halaman/Admin/admin'
-import laporan from "./halaman/Laporan/laporan";
+import Laporan from "./halaman/Laporan/laporan";
 import Inventaris from "./halaman/Inventaris/inventaris";
+import Transaksi from "./halaman/Transaksi/transaksi";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-   <Admin/>
+   <Inventaris/>
 )
 
 // If you want to start measuring performance in your app, pass a function
