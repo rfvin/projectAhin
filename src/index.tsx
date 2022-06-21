@@ -17,7 +17,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-   <Inventaris/>
+   <Transaksi/>
 )
 
 // If you want to start measuring performance in your app, pass a function

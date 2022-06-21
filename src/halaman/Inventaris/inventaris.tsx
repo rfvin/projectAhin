@@ -26,7 +26,33 @@ const Inventaris = () => {
                                 <button className="btn btn-primary text-white ms-2"><i className="bi-search"></i></button>
                             </div>
                         </div>
+                    </div>
+                </div>
+                {/*Tabel Menampilkan Data*/}
+                <div className="row mt-3">
+                    <div className="col-12">
+                        <table className="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Barang</th>
+                                <th scope="col">Kode Barang</th>
+                                <th scope="col">Jumlah Barang</th>
+                                <th scope="col">Harga Barang</th>
+                                <th scope="col">Merek Barang</th>
+                                <th scope="col">Nama Supplier</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div className="row justify-content-center">
+                    <div className="col-2">
+                        <a href="">Tambah Barang...</a>
                     </div>
                 </div>
             </>
