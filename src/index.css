@@ -1,42 +1,20 @@
-/* Tampilan Web */
-.title-masuk {
+.masuk {
   font-size: 96px;
-  font-weight: 700;
+  font-weight: bold;
 }
 
-/* .title {
-
-} */
-
 button {
-  background-color: #007aff;
-  border-radius: 7.5px;
-  border: none;
-  width: 175px;
+  border-radius: 7.5px !important;
+  width: 200px;
   height: 50px;
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff;
-  text-decoration: none;
-  line-height: 50px;
-  text-align: center;
+  font-weight: bold !important;
 }
 
 input {
-  background-color: #ffffff;
-  border-radius: 7.5px;
+  border-radius: 7.5px !important;
   border: 1px solid #8e8e93;
-  width: 500px;
   height: 50px;
-  text-indent: 15px;
 }
-
-input::placeholder {
-  font-size: 24px;
-  font-weight: 500;
-}
-
-
 
 .active {
   background-color: #ffffff;
@@ -44,8 +22,11 @@ input::placeholder {
   border-radius: 75px;
 }
 
+.hint {
+  color: #8e8e93;
+}
 
-/* Default React (JANGAN EDIT NANTI ERROR) */
+/* ========== Default React (JANGAN EDIT NANTI ERROR) ========== */
 body * {
   margin: 0;
   font-family: 'Inter', sans-serif;

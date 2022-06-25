@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 import '../../index.css'
-import "../../Theme/theme.css"
-import THEME from "../../Theme/theme";
+import THEME from "../theme/theme";
+
 
 const Admin: FC = ()=>{
     return (

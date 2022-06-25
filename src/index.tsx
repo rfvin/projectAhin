@@ -5,19 +5,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import inventaris from './halaman/Inventaris/inventaris';
-import THEME from "./Theme/theme";
-import Login from './halaman/Login/masuk';
-import Admin from './halaman/Admin/admin'
-import Laporan from "./halaman/Laporan/laporan";
-import Inventaris from "./halaman/Inventaris/inventaris";
-import Transaksi from "./halaman/Transaksi/transaksi";
+import inventaris from './halaman/inventaris';
+import THEME from "./theme/theme";
+import Login from './halaman/login';
+import Admin from './halaman/admin'
+import Laporan from "./halaman/laporan";
+import Inventaris from "./halaman/inventaris";
+import Transaksi from "./halaman/transaksi";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-   <Transaksi/>
+   <Laporan/>
 )
 
 // If you want to start measuring performance in your app, pass a function
