@@ -1,10 +1,10 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import THEME from "../theme/theme";
+import THEME from "../Theme/theme";
 import '../index.css';
 
-const inventaris = () => {
+const Inventaris = () => {
     return (
         <THEME title={"Inventaris"} subtitle={"Lihat, edit, dan kelola barang pada toko."}>
             <>
@@ -53,4 +53,4 @@ const inventaris = () => {
     )
 }
 
-export default inventaris
+export default Inventaris

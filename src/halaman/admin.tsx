@@ -1,6 +1,5 @@
 import React, {FC} from 'react'
-import '../../index.css'
-import THEME from "../theme/theme";
+import THEME from "../Theme/theme";
 
 
 const Admin: FC = ()=>{

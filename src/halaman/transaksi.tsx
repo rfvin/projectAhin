@@ -1,9 +1,9 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import '../theme/theme.css'
+import '../Theme/theme.css'
 import '../index.css'
-import THEME from "../theme/theme";
+import THEME from "../Theme/theme";
 
 const Transaksi = () => {
     return (
