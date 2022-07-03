@@ -33,7 +33,7 @@ const Login: FC = () => {
 
     useEffect(() => {
         if (localStorage.getItem('auth'))
-            window.location.href = '#'
+            window.location.href = '/inventaris'
     },[])
 
     const handleLogin = async () => {
@@ -45,7 +45,7 @@ const Login: FC = () => {
                 if(doc.data().password === Userinput.password){
                     success = true
                     localStorage.setItem("auth",doc.data().password)
-                    window.location.href ='#'
+                    window.location.href ='/inventaris'
                     return
                 }
             })

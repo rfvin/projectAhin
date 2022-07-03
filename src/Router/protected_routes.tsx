@@ -12,7 +12,7 @@ const ProtectedRoutes: FC<Props> = ({children}) => {
                 localStorage.getItem('auth') ?
                     children
                     :
-                    <Navigate to={"login"} />
+                    <Navigate to={"/"} />
             }
         </>
     );
