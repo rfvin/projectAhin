@@ -76,7 +76,8 @@ i {
 }
 
 .theme-sidebar-menu:hover{
-    width: 90%;
+    overflow: hidden;
+    width: 80%;
     padding: 20px;
     text-decoration: none;
     font-weight: bold;
