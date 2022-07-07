@@ -3,15 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import THEME from "../Theme/theme";
 import '../index.css';
-import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase"
-import { clear } from "console";
-import { resolve } from "path";
 
 const Inventaris: FC = () => {
     const inventarisCollectionRef = collection(db, 'Inventaris')
     const [inventaris, setInventaris] = useState<Array<object>>([])
-    const [toast, settoast] = useState<string>("")
+    const [toast, setToast] = useState<string>("")
     const [inventarisInput, setInventarisInput] = useState<object | any>({
         'nama_barang': '',
         'jumlah_barang': '',
@@ -21,23 +19,23 @@ const Inventaris: FC = () => {
     })
 
     const successAdd = () => {
-        settoast("success"),
+        setToast("success"),
             setTimeout(() => {
-                settoast("")
+                setToast("")
             }, 3000);
     }
 
     const successUpdate = () => {
-        settoast("update"),
+        setToast("update"),
             setTimeout(() => {
-                settoast("")
+                setToast("")
             }, 3000);
     }
 
     const successDelete = () => {
-        settoast("delete"),
+        setToast("delete"),
             setTimeout(() => {
-                settoast("")
+                setToast("")
             }, 3000);
     }
 
@@ -101,7 +99,7 @@ const Inventaris: FC = () => {
                     .then(() => {
                         clearInput()
                         getInventaris()
-                        successUpdate()
+                        successDelete()
                     })
             )
         })
@@ -259,14 +257,116 @@ const Inventaris: FC = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button className="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
-                            <button className="btn btn-primary" onClick={() => { addInventaris() }}>Save</button>
+                            <div className="modal-footer">
+                                <button className="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
+                                <button className="btn btn-primary" onClick={() => { addInventaris() }}>Save</button>
+                            </div>
                         </div>
                     </div>
-
                 </div>
+
+                {/* Modal Detail Barang */}
+                <div className="modal fade" id="modalDetailBarang" tabIndex={-1}
+                aria-labelledby ="modalDetailBarangLabel" aria-hidden = "true">
+                    <div className="modal-dialog modal-lg">
+                        <div className="modal-content">
+                            <div className="modal-header theme-bg-blue text-white">
+                                <h5 className="modal-title" id="exampleModalLabel">Detail Barang</h5>
+                                <button className="btn-close" type="button" data-bs-dismiss = "modal" aria-label="Ckise"></button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="row">
+                                    <div className="col-5">
+                                        <label htmlFor="" className="form-label"> Nama Barang</label>
+                                        <input value={inventarisInput.nama_barang} type="text" className="form-control" placeholder={"Nama Barang"}
+                                            onChange = {(e) => {
+                                                setInventarisInput((prev:object)=>({
+                                                    ...prev,
+                                                    nama_barang : e.target.value
+                                                }))
+                                            }} />
+                                    </div>
+                                    <div className="col-3">
+                                        <label htmlFor="" className="form-label">Kode Barang</label>
+                                        <input value={inventarisInput.kode_barang} type="text" className="form-control" placeholder={"Kode"}
+                                            onChange = {(e) => {
+                                                setInventarisInput((prev:object)=>({
+                                                    ...prev,
+                                                    kode_barang : e.target.value
+                                                }))
+                                            }} />
+                                    </div>
+                                    <div className="col-4">
+                                        <label htmlFor="" className="form-label">Merek Barang</label>
+                                        <input value={inventarisInput.merek_barang} type="text" className="form-control" placeholder={"Merek Barang"}
+                                            onChange = {(e) => {
+                                                setInventarisInput((prev:object)=>({
+                                                    ...prev,
+                                                    merek_barang : e.target.value
+                                                }))
+                                            }} />
+                                    </div>
+                                </div>
+                                <div className="row mt-3">
+                                    <div className="col-4">
+                                        <label htmlFor="" className="form-label">Nama Supplier</label>
+                                        <input value={inventarisInput.nama_supplier} type="text" className="form-control" placeholder={"Nama Supplier"}
+                                            onChange = {(e) => {
+                                                setInventarisInput((prev:object)=>({
+                                                    ...prev,
+                                                    nama_supplier : e.target.value
+                                                }))
+                                            }} />
+                                    </div>
+                                    <div className="col-4">
+                                        <label htmlFor="" className="form-label">Harga</label>
+                                        <input value={inventarisInput.harga_barang} type="text" className="form-control" placeholder={"Harga Barang"}
+                                            onChange = {(e) => {
+                                                setInventarisInput((prev:object)=>({
+                                                    ...prev,
+                                                    harga_barang : e.target.value
+                                                }))
+                                            }} />
+                                    </div>
+                                </div>
+
+                                <div className="row mt-4 justify-content-between">
+                                    <div className="col-6 d-flex">
+                                        <span>Jumlah Barang</span>
+                                        <input type="number" className="form-control" placeholder={"Jumlah Barang"}
+                                            onChange={(e) => {
+                                                setInventarisInput((prev: object) => ({
+                                                    ...prev,
+                                                    jumlah_barang: e.target.value
+                                                }))
+                                            }} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button className="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#konfirmasiHapus">Hapus</button>
+                                <button className="btn btn-primary" onClick={()=>{editInventaris()}}>Simpan</button>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 p-5">
+                                    <div className="collapse" id="konfirmasiHapus">
+                                        <div className="card card-body theme-bg-red text-white">
+                                            Data yang sudah dihapus tidak dapat dikembalikan
+
+                                            <div className="col text-end">
+                                                <button type = "button" className="btn btn-primary me-2" data-bs-toggle="collapse" data-bs-target="#konfirmasiHapus">
+                                                    Batal
+                                                </button>
+                                                <button type= "button" className="btn btn-light" onClick={()=>{deleteInventaris()}}>Hapus</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </>
         </THEME>
     )
