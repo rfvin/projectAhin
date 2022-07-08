@@ -19,21 +19,21 @@ const Inventaris: FC = () => {
     })
 
     const successAdd = () => {
-        setToast("success"),
+        return setToast("success"),
             setTimeout(() => {
                 setToast("")
             }, 3000);
     }
 
     const successUpdate = () => {
-        setToast("update"),
+        return setToast("update"),
             setTimeout(() => {
                 setToast("")
             }, 3000);
     }
 
     const successDelete = () => {
-        setToast("delete"),
+        return setToast("delete"),
             setTimeout(() => {
                 setToast("")
             }, 3000);
@@ -127,7 +127,7 @@ const Inventaris: FC = () => {
                     <div className="col-12">
                         <div className="row justify-content-between">
                             <div className="col-4 d-flex align-items-center">
-                                <span>Menampilkan {inventaris.length} Barang </span><br />
+                                <span>Menampilkan {inventaris.length} barang</span><br />
                             </div>
                             <div className="col-4 d-flex">
                                 <input type="text" className="form-control form-control-lg"
@@ -163,8 +163,8 @@ const Inventaris: FC = () => {
                                                 <td>{idx + 1}</td>
                                                 <td>{data[0].nama_barang}</td>
                                                 <td>{data[0].kode_barang}</td>
-                                                <td>{data[0].harga_barang}</td>
-                                                <td>{data[0].jumlah_barang}</td>
+                                                <td>Rp.{data[0].harga_barang},-</td>
+                                                <td>{data[0].jumlah_barang} pcs</td>
                                                 <td><a href="#!" onClick={() => { seeDetailInventaris(data[0]) }} data-bs-toggle="modal"
                                                     data-bs-target="#modalDetailBarang">Lihat Detail</a></td>
                                             </tr>
@@ -175,8 +175,8 @@ const Inventaris: FC = () => {
                         </table>
                     </div>
                     <div className="col-12 justify-content-center">
-                        <a href="" data-bs-toggle="modal" data-bs-target='#exampleModal' className="btn btn-primary center">
-                            Tambah Barang ...</a>
+                        <a className="btn btn-primary center" href="" data-bs-toggle="modal" data-bs-target='#exampleModal'>
+                            Tambah Barang</a>
                     </div>
                 </div>
 
