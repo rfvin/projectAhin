@@ -43,7 +43,7 @@ const Transaksi = () => {
                     <div className="col-12">
                         <div className="row justify-content-between">
                             <div className="col-4 d-flex align-items-center">
-                                <span>Menampilkan {Inventaris.length} barang</span><br />
+                                <span>Menampilkan {inventaris.length} barang</span><br />
                             </div>
                             <div className="col-4 d-flex">
                                 <input type="text" className="form-control"

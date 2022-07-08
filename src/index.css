@@ -22,14 +22,6 @@ input {
   border-radius: 75px;
 }
 
-.hint {
-  color: #8e8e93;
-}
-
-br {
-  border-width: 1px;
-}
-
 /* ========== Default React (JANGAN EDIT NANTI ERROR) ========== */
 body * {
   margin: 0;
