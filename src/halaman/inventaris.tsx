@@ -19,21 +19,21 @@ const Inventaris: FC = () => {
     })
 
     const successAdd = () => {
-        setToast("success"),
+        setToast("success")
             setTimeout(() => {
                 setToast("")
             }, 3000);
     }
 
     const successUpdate = () => {
-        setToast("update"),
+        setToast("update")
             setTimeout(() => {
                 setToast("")
             }, 3000);
     }
 
     const successDelete = () => {
-        setToast("delete"),
+        setToast("delete")
             setTimeout(() => {
                 setToast("")
             }, 3000);
