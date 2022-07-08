@@ -20,41 +20,32 @@ const Inventaris: FC = () => {
 
     const successAdd = () => {
         setToast("success")
-<<<<<<< HEAD
             setTimeout(() => {
                 setToast("")
             }, 3000);
-=======
         setTimeout(() => {
             setToast("")
         }, 3000);
->>>>>>> dc130218dcea25483b10641d22c8c696d2bd3a93
     }
 
     const successUpdate = () => {
         setToast("update")
-<<<<<<< HEAD
             setTimeout(() => {
                 setToast("")
             }, 3000);
-=======
         setTimeout(() => {
             setToast("")
         }, 3000);
->>>>>>> dc130218dcea25483b10641d22c8c696d2bd3a93
     }
 
     const successDelete = () => {
         setToast("delete")
-<<<<<<< HEAD
             setTimeout(() => {
                 setToast("")
             }, 3000);
-=======
         setTimeout(() => {
             setToast("")
         }, 3000);
->>>>>>> dc130218dcea25483b10641d22c8c696d2bd3a93
     }
 
     const clearInput = () => {
