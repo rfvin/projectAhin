@@ -29,8 +29,14 @@ const Laporan = () => {
             <>
                 <div className="row">
                     <div className='col-12 text-end border-bottom p-2'>
-                        
-                    
+                        <button onClick={() => {setButtonActive("Hasil Penjualan")}} className={`btn ${buttonActive === 'Hasil Penjualan' ? 'btn-dark' : 'btn-primary'} ms-2`}>Hasil Penjualan</button>
+                        <button onClick={() => {setButtonActive("Riwayat Pembelian")}} className={`btn ${buttonActive === 'Riwayat Pembelian' ? 'btn-dark' : 'btn-primary'} ms-2`}>Riwayat Pembelian</button>
+                        <button onClick={() => {setButtonActive("Daftar Piutang")}} className={`btn ${buttonActive === 'Daftar Piutang' ? 'btn-dark' : 'btn-primary'} ms-2`}>Daftar Piutang</button>
+                    </div>
+                    <div className="col-12">
+                        {
+                            <ComponentWillBeMount/>
+                        }
                     </div>
                 </div>
             </>
