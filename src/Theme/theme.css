@@ -10,9 +10,35 @@
     background: #34C759;
 }
 
+input.checkbox {
+	height: 13px;
+	width: 13px
+}
+
 /* Icon */
 i {
     margin-left: 1.5vh;
+}
+
+/* Toast */
+.toast-update, .toast-tambah, .toast-hapus{
+    background: #007AFF;
+    padding: 20px;
+    text-align: center;
+    width: max-content;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #007AFF;
+}
+
+.toast-tambah{
+    background: #34C759;
+}
+.toast-hapus{
+    background: #FF3B30;
 }
 
 /* Sidebar */
