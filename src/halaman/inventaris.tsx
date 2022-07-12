@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import THEME from "../Theme/theme";
 import '../index.css';
-import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc ,query ,where} from "firebase/firestore";
 import { db } from "../firebase"
 
 const Inventaris: FC = () => {
@@ -17,6 +17,30 @@ const Inventaris: FC = () => {
         'kode_barang': '',
         'id': ''
     })
+
+    // Filter
+    const [filter, setFilter] = useState("")
+    const [isFilter, setIsFilter] = useState(false)
+
+    const searchInventaris = async () => {
+        setIsFilter(true)
+        const query_inventaris = query(inventarisCollectionRef, where("kode_barang", "==", filter))
+        const querySnapshot = await getDocs(query_inventaris)
+        let search_result: any = []
+        querySnapshot.forEach((doc) => {
+            search_result = [...search_result, [doc.data(), doc.id]]
+        });
+        setInventaris(search_result)
+    }
+
+    const removeSearch = () => {
+        let filter_input = document.getElementById('filter_input')
+        setFilter("")
+        setIsFilter(false)
+        getInventaris()
+        // @ts-ignore
+        filter_input.value = ""
+    }
 
     const successAdd = () => {
         setToast("success")
@@ -142,10 +166,33 @@ const Inventaris: FC = () => {
                                 <input type="text" className="form-control form-control-lg"
                                     placeholder="Cari Barang..."
                                     aria-label=""
+                                    onChange={(e) => {
+                                        setFilter(e.target.value)
+                                    }}
+                                    defaultValue={filter}
                                 />
-                                <button className="btn btn-primary ms-2">Cari</button>
+                                <button onClick={() => {
+                                    searchInventaris()
+                                }}
+                                className="btn btn-primary ms-2">Cari</button>
                             </div>
                         </div>
+                        {
+                            isFilter &&
+                            <div className="row mt-3">
+                                <div className="alert alert-warning alert-dismissible fade show" role="alert">
+                                    Menampilkan hasil pencarian untuk kode barang
+                                    <strong className="ms-2">{filter}</strong>
+                                    <button
+                                        onClick={() => {
+                                            removeSearch()
+                                        }}
+                                        type="button" className="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            </div>
+                        }
+
 
                         {/* Tabel Menampilkan Data */}
                         <div className="row mt-3">
