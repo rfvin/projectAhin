@@ -17,6 +17,7 @@ const Transaksi = () => {
         'jumlah_barang': '',
         'harga_barang': '',
         'kode_barang': '',
+        'satuan_barang': '',
         'id': ''
     })
 
@@ -75,13 +76,13 @@ const Transaksi = () => {
                                         data[0].id = data[1]
                                         return (
                                             <tr key={data[0].id}>
-                                                <td>{idx + 1}</td>
+                                                <td><strong>{idx + 1}.</strong></td>
                                                 <td>{data[0].nama_barang}</td>
                                                 <td>{data[0].kode_barang}</td>
                                                 <td>Rp.{data[0].harga_barang},-</td>
-                                                <td>{data[0].jumlah_barang} pcs</td>
-                                                <td><a href="#!" onClick={() => {  }} data-bs-toggle="modal"
-                                                    data-bs-target="#modalDetailBarang">Beli</a></td>
+                                                <td>{data[0].jumlah_barang + " " + data[0].satuan_barang}</td>
+                                                {/* <td><a href="#!" onClick={() => { seeDetailInventaris(data[0]) }} data-bs-toggle="modal"
+                                                    data-bs-target="#modalDetailBarang">Lihat Detail</a></td> */}
                                             </tr>
                                         )
                                     })
