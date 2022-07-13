@@ -70,7 +70,7 @@ const Transaksi = () => {
         filter_input.value = ""
     }
 
-    const addToCart = (obj:object|any) => {
+    const addToCart = (obj:any) => {
         obj.jumlah_beli = 1 
         obj.tanggal_transaksi = new Date().toISOString()
         obj.total_harga = Number(obj.harga_barang)
@@ -85,7 +85,7 @@ const Transaksi = () => {
             setTotal(total+Number(obj.harga_barang))
         }
     } 
-    const checkIfItemInCart = (item:object|any)=>{
+    const checkIfItemInCart = (item:any)=>{
         return cart.some((e:any)=> e.id === item.id)
     }
 
@@ -111,11 +111,12 @@ const Transaksi = () => {
         setCart(cartExist)
     }
 
-    const deleteItemOnCartWhenCheckout = (item:object|any) => {
+    const deleteItemOnCartWhenCheckout = (item:any) => {
         let selected:any = cart.filter(function(el:any){
             return el.id = item.id;
         }) [0]
-        setTotal(Number(total) - Number(selected.jumlah_beli * selected.jumlah_barang))
+
+            setTotal(Number(total) - Number(selected.jumlah_beli * selected.jumlah_barang))
         
         setCart([...cart.filter(function(el:any){
             return el.id != item.id;
@@ -129,7 +130,7 @@ const Transaksi = () => {
             setDoc(doc(db,'transaksi',`${collection_id_generated}`),{
                 doc_id: collection_id_generated
             }).then(() => {
-                cart.map((item:object|any) => {
+                cart.map((item:any) => {
                     new Promise(resolve =>{
                         resolve(
                             setDoc(doc(db,`transaksi/${collection_id_generated}/item`,`doc#${item.id}`),{

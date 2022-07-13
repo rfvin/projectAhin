@@ -12,7 +12,6 @@ const HasilPenjualan: FC =() => {
     const soldRef:any = useRef(0)
 
     //Date Filter Store State
-
     interface dateProps{
         date_from:string,
         date_to:string
@@ -36,20 +35,21 @@ const HasilPenjualan: FC =() => {
                         let refHarga = collection(db,"transaksi",`${trans_id}`,'total_harga')
                         let refItem = collection(db,"transaksi", `${trans_id}`, 'item')
 
-                        if (convert_trans_id >= from && convert_trans_id <= to) {
-                            getDocs(refHarga)
-                                .then((res)=>{
-                                    pendapatan.current += Number(res.docs.map(doc => doc.data().total_harga_transaksi))
-                                    setTotal(pendapatan.current)
-                                })
-                            getDocs(refItem)
-                                .then((res) =>{
-                                    res.docs.map(doc=>{
-                                        soldRef.current += Number(doc.data().item.jumlah_beli)
+                        
+                            if (convert_trans_id >= from && convert_trans_id <= to) {
+                                getDocs(refHarga)
+                                    .then((res)=>{
+                                        pendapatan.current += Number(res.docs.map(doc => doc.data().total_harga_transaksi))
+                                        setTotal(pendapatan.current)
                                     })
-                                    setTerjual(soldRef.current  )
-                                })
-                        }
+                                getDocs(refItem)
+                                    .then((res) =>{
+                                        res.docs.map(doc=>{
+                                            soldRef.current += Number(doc.data().item.jumlah_beli)
+                                        })
+                                        setTerjual(soldRef.current  )
+                                    })
+                            }
 
                     })
                 })
