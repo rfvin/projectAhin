@@ -16,6 +16,10 @@ const Transaksi = () => {
     const [total, setTotal] = useState<number>(0)
     const [totalManual, setTotalManual] = useState<number>(0)
     const [isInputManual, setIsInputManual] = useState<boolean>(false)
+    
+    //filter
+    const [filter, setFilter] = useState("")
+    const [isFilter, setIsFilter] = useState(false)
 
     //State Belum lunas
     interface BelumLunasProps {
@@ -40,10 +44,6 @@ const Transaksi = () => {
             )
         })
     }
-
-    //filter
-    const [filter, setFilter] = useState("")
-    const [isFilter, setIsFilter] = useState(false)
 
     const searchInventaris = async () => {
         setIsFilter(true)
