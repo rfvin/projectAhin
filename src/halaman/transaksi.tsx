@@ -184,7 +184,7 @@ const Transaksi = () => {
                                 <span>Menampilkan {inventaris.length} barang</span> <br />
                             </div>
                             <div className="col-4 d-flex">
-                                <input id="filter_input" className="form-control form-control-lg text-uppercase" type="text"
+                                <input className="form-control form-control-lg text-uppercase" type="text"
                                     placeholder="Cari Barang..."
                                     aria-label=".form-control-lg example"
                                     onChange={(e) => {
@@ -201,7 +201,7 @@ const Transaksi = () => {
                             isFilter &&
                             <div className="row mt-3">
                                 <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                                    Menampilkan hasil pencarian untuk kode barang
+                                    Menampilkan hasil pencarian untuk 
                                     <strong className="ms-2">{filter}</strong>
                                     <button
                                         onClick={() => {
