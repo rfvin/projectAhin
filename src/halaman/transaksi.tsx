@@ -17,10 +17,6 @@ const Transaksi = () => {
     const [totalManual, setTotalManual] = useState<number>(0)
     const [isInputManual, setIsInputManual] = useState<boolean>(false)
 
-    //filter
-    const [filter, setFilter] = useState("")
-    const [isFilter, setIsFilter] = useState(false)
-
     //State Belum lunas
     interface BelumLunasProps {
         nama_pembeli: string,
@@ -45,9 +41,13 @@ const Transaksi = () => {
         })
     }
 
+    //filter
+    const [filter, setFilter] = useState("")
+    const [isFilter, setIsFilter] = useState(false)
+
     const searchInventaris = async () => {
         setIsFilter(true)
-        const query_inventaris = query(inventarisCollectionRef, where("kode_barang", "==", filter))
+        const query_inventaris = query(inventarisCollectionRef, where("nama_barang", ">=", filter))
         const querySnapshot = await getDocs(query_inventaris)
         let search_result: any = []
         querySnapshot.forEach((doc) => {
@@ -184,7 +184,7 @@ const Transaksi = () => {
                                 <span>Menampilkan {inventaris.length} barang</span> <br />
                             </div>
                             <div className="col-4 d-flex">
-                                <input id="filter_input" className="form-control form-control-lg" type="text"
+                                <input id="filter_input" className="form-control form-control-lg text-uppercase" type="text"
                                     placeholder="Cari Barang..."
                                     aria-label=".form-control-lg example"
                                     onChange={(e) => {
@@ -319,7 +319,7 @@ const Transaksi = () => {
                             </div>
                             <div className="modal-body" id="myGroup">
                                 <div className="row">
-                                    <div className="col-7 d-flex align-items-center" style={{color:'grey'}}>
+                                    <div className="col-7 d-flex align-items-center" style={{ color: 'grey' }}>
                                         <h3>Total harga: <b>Rp. {total},-</b></h3>
                                     </div>
                                     <div className="col-5">

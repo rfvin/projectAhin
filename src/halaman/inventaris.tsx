@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import THEME from "../Theme/theme";
 import '../index.css';
-import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc ,query ,where} from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where } from "firebase/firestore";
 import { db } from "../firebase"
 
 const Inventaris: FC = () => {
@@ -16,6 +16,8 @@ const Inventaris: FC = () => {
         'harga_barang': '',
         'kode_barang': '',
         'satuan_barang': '',
+        'nama_supplier': '',
+        'merek_barang': '',
         'id': ''
     })
 
@@ -25,7 +27,7 @@ const Inventaris: FC = () => {
 
     const searchInventaris = async () => {
         setIsFilter(true)
-        const query_inventaris = query(inventarisCollectionRef, where("kode_barang", "==", filter))
+        const query_inventaris = query(inventarisCollectionRef, where("nama_barang", ">=", filter))
         const querySnapshot = await getDocs(query_inventaris)
         let search_result: any = []
         querySnapshot.forEach((doc) => {
@@ -81,6 +83,8 @@ const Inventaris: FC = () => {
             'harga_barang': '',
             'kode_barang': '',
             'satuan_barang': '',
+            'nama_supplier': '',
+            'merek_barang': '',
             'id': ''
         }))
     }
@@ -149,6 +153,8 @@ const Inventaris: FC = () => {
             'harga_barang': obj.harga_barang,
             'kode_barang': obj.kode_barang,
             'satuan_barang': obj.satuan_barang,
+            'nama_supplier': obj.nama_supplier,
+            'merek_barang': obj.merek_barang,
         }))
     }
 
@@ -166,7 +172,7 @@ const Inventaris: FC = () => {
                                 <span>Menampilkan {inventaris.length} barang</span><br />
                             </div>
                             <div className="col-4 d-flex">
-                                <input type="text" className="form-control form-control-lg"
+                                <input type="text" className="form-control form-control-lg text-uppercase"
                                     placeholder="Cari Barang..."
                                     aria-label=""
                                     onChange={(e) => {
@@ -177,14 +183,14 @@ const Inventaris: FC = () => {
                                 <button onClick={() => {
                                     searchInventaris()
                                 }}
-                                className="btn btn-primary ms-2">Cari</button>
+                                    className="btn btn-primary ms-2">Cari</button>
                             </div>
                         </div>
                         {
                             isFilter &&
                             <div className="row mt-3">
                                 <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                                    Menampilkan hasil pencarian untuk kode barang
+                                    Menampilkan hasil pencarian untuk 
                                     <strong className="ms-2">{filter}</strong>
                                     <button
                                         onClick={() => {
