@@ -90,13 +90,13 @@ const Transaksi = () => {
     }
 
     const editItemOnCartWhenCheckout =(item:any,value:string) =>{
-        let cartExist:any = cart
-        for (let i = 0; i<cartExist.length;i++){
-            if(cartExist[i].id === item.id){
-                let tmp = total - (Number(cartExist[i].jumlah_beli)*(cartExist[i].harga_barang))
-                if(value.length != 0 && value != undefined && value != "0" && value) {
-                    cartExist[i].jumlah_barang = value;
-                    cartExist[i].total_harga = Number(cartExist[i].harga_barang)*Number(value)
+        let cartExist: any = cart
+        for (let i = 0; i < cartExist.length; i++) {
+            if (cartExist[i].id === item.id) {
+                let tmp = total - (Number(cartExist[i].jumlah_beli) * Number(cartExist[i].harga_barang))
+                if (value.length != 0 && value != undefined && value !== "0" && value) {
+                    cartExist[i].jumlah_beli = value;
+                    cartExist[i].total_harga = Number(cartExist[i].harga_barang) * Number(value)
                     tmp += Number(cartExist[i].harga_barang) * Number(value)
                     console.log(tmp)
                 } else {
@@ -104,21 +104,20 @@ const Transaksi = () => {
                     cartExist[i].total_harga = Number(cartExist[i].harga_barang)
                     tmp += Number(cartExist[i].harga_barang)
                 }
-            setTotal(tmp)
-            break
+                setTotal(tmp)
+                break
             }
         }
         setCart(cartExist)
     }
 
     const deleteItemOnCartWhenCheckout = (item:any) => {
-        let selected:any = cart.filter(function(el:any){
-            return el.id = item.id;
-        }) [0]
+        let selected: any = cart.filter(function (el: any) {
+            return el.id === item.id;
+        })[0]
+        setTotal(Number(total) - Number(selected.jumlah_beli * selected.harga_barang))
 
-            setTotal(Number(total) - Number(selected.jumlah_beli * selected.jumlah_barang))
-        
-        setCart([...cart.filter(function(el:any){
+        setCart([...cart.filter(function (el: any) {
             return el.id != item.id;
         })])
     }
