@@ -4,15 +4,12 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../Theme/theme.css'
 import '../index.css'
 import THEME from "../Theme/theme";
-import Inventaris from "./inventaris";
 import { collection, addDoc, getDocs, doc,query,setDoc,where } from "firebase/firestore";
 import { db } from "../firebase";
-import { resolve } from "path";
 
 const Transaksi = () => {
 
     const inventarisCollectionRef = collection(db, 'Inventaris')
-    const transaksiCollectionRef = collection (db, 'transaksi')
     const riwayatPembelianCollectionRef = collection(db,'riwayat_pembelian')
     const daftarPiutangCollectionRef = collection (db,'daftar_piutang')
     
