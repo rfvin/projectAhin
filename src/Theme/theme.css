@@ -119,3 +119,12 @@ i {
 .theme-subtitle {
     color: #8e8e93;
 }
+
+/* CSS Modal */
+
+.modal-header,
+.modal-title {
+    background-color: #007AFF;
+    color: white;
+    font-weight: bold;
+}

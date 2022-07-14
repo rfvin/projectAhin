@@ -35,8 +35,8 @@ const Transaksi = () => {
     const [belumLunas,setBelumLunas] = useState<BelumLunasProps>({
         'nama_pembeli' : '',
         'keterangan' : '',
-    })
-
+        })
+    
 
     const getInventaris = () => {
         new Promise(resolve => {
@@ -257,7 +257,41 @@ const Transaksi = () => {
                             </div>
                         </div>
                     </div>
-
+                </div>
+                {/*Tabel Menampilkan Data*/}
+                <div className="row mt-3">
+                    <div className="col-12">
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col-1">No</th>
+                                    <th scope="col-3">Nama Barang</th>
+                                    <th scope="col-3">Kode Barang</th>
+                                    <th scope="col-2">Harga</th>
+                                    <th scope="col-2">Sisa</th>
+                                    <th scope="col-1"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    inventaris.length > 0 && inventaris.map((data: any, idx) => {
+                                        data[0].id = data[1]
+                                        return (
+                                            <tr key={data[0].id}>
+                                                <td><strong>{idx + 1}.</strong></td>
+                                                <td>{data[0].nama_barang}</td>
+                                                <td>{data[0].kode_barang}</td>
+                                                <td>Rp.{data[0].harga_barang},-</td>
+                                                <td>{data[0].jumlah_barang + " " + data[0].satuan_barang}</td>
+                                                {/* <td><a href="#!" onClick={() => { seeDetailInventaris(data[0]) }} data-bs-toggle="modal"
+                                                    data-bs-target="#modalDetailBarang">Lihat Detail</a></td> */}
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                     <div className="col-12 justify-content-center">
                         <button className="btn btn-primary center" type="button" data-bs-toggle="modal"
                                 data-bs-target="#modalCheckout">Bayar
