@@ -199,11 +199,11 @@ const Inventaris: FC = () => {
 
                         {/* Tabel Menampilkan Data */}
                         <div className="row mt-3">
-                            <div className="col-12">
+                            <div className="col-12 table-wrapper">
                                 <table className="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col-1">No</th>
+                                            <th scope="col-1">No.</th>
                                             <th scope="col-3">Nama Barang</th>
                                             <th scope="col-3">Kode Barang</th>
                                             <th scope="col-2">Harga</th>
@@ -217,10 +217,10 @@ const Inventaris: FC = () => {
                                                 data[0].id = data[1]
                                                 return (
                                                     <tr key={data[0].id}>
-                                                        <td><strong>{idx + 1}.</strong></td>
+                                                        <td><b>{idx + 1}.</b></td>
                                                         <td>{data[0].nama_barang}</td>
                                                         <td>{data[0].kode_barang}</td>
-                                                        <td>Rp.{data[0].harga_barang},-</td>
+                                                        <td>Rp. {data[0].harga_barang},-</td>
                                                         <td>{data[0].jumlah_barang + " " + data[0].satuan_barang}</td>
                                                         <td><a href="#!" onClick={() => { seeDetailInventaris(data[0]) }} data-bs-toggle="modal"
                                                             data-bs-target="#modalDetailBarang">Lihat Detail</a></td>
@@ -331,7 +331,7 @@ const Inventaris: FC = () => {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button className="btn btn-primary" onClick={() => { addInventaris() }}>Save</button>
+                                <button className="btn btn-primary" onClick={() => { addInventaris() }}>Simpan</button>
                             </div>
                         </div>
                     </div>

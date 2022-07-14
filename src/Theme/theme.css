@@ -24,6 +24,13 @@ i {
     margin-left: 1.5vh;
 }
 
+/* Table */
+.table-wrapper {
+    max-height: 75vh;
+    overflow: auto;
+    display: inline-block;
+}
+
 /* Toast */
 .toast-update, .toast-tambah, .toast-hapus{
     background: #007AFF;
