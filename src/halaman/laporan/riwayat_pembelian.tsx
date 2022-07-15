@@ -1,8 +1,7 @@
 import React,{FC,useEffect,useState} from "react";
-import {collection,collectionGroup,getDocs} from "firebase/firestore";
+import {collection,getDocs} from "firebase/firestore";
 import {db} from "../../firebase";
 import moment from "moment";
-import Transaksi from "../transaksi";
 
 const RiwayatPembelian : FC = () =>{
     const riwayatPembelianRef = collection(db , 'riwayat_pembelian');
@@ -28,8 +27,47 @@ const RiwayatPembelian : FC = () =>{
             })
     }
 
+    const getTransaksi = async (obj:any) => {
+        const TransaksiRef = collection(db, 'transaksi' , obj.kode_transaksi,'item')
+        await getDocs(TransaksiRef)
+            .then((res) => {
+                setItemTransaksi (res.docs.map(doc => doc.data()))
+                setTransaksi(obj)
+            })
+    }
 
+    const filterByDate = async () => {
+        let tmp_filter_data: any = []
+        await getDocs(riwayatPembelianRef)
+            .then(res => {
+                setIsFilter(true)
+                res.docs.map(doc =>{
+                    let convert_trans_id = moment(doc.data().kode_transaksi.split("#")[0])
+                    let from = moment(dateFilter.date_from)
+                    let to = moment(dateFilter.date_to)
+                    if(convert_trans_id >= from && convert_trans_id <= to){
+                        tmp_filter_data = [...tmp_filter_data,doc.data()]
+                    }
+                })
+            })
+            setDataRiwayat(tmp_filter_data)
+    }
 
+    const clearFilterByDate = async() => {
+        setIsFilter(true)
+        let date_from_element:any = document.getElementById('date_from')
+        let date_to_element:any = document.getElementById('date_to')
+        date_from_element.value = null; date_to_element = null
+        await setDateFilter((prev:dateProps)=> ({
+            ...prev,
+            date_to : '',
+            date_from : ''
+        }))
+    }
+
+    useEffect(() => {
+        getRiwayatPembelian()
+    },[])
 
     return(
         <div className="row">
@@ -64,7 +102,7 @@ const RiwayatPembelian : FC = () =>{
                 </div> 
                 <div className="form-group">
                     <button className="btn btn-primary ms-2" style={{marginTop:-2}} onClick={() => {
-                        // filterByDate()
+                         filterByDate()
                     }}>
                         Apply Filter
                     </button>
@@ -78,10 +116,106 @@ const RiwayatPembelian : FC = () =>{
                         <b> {moment(dateFilter.date_from).format('MMMM Do YYYY')} to </b>
                         <b>{moment(dateFilter.date_to).format('MMMM Do YYYY')}</b>
 
-                        {/* <button className="btn-close " onClick={() => {clearFilterByDate()}} type="button" data-bs-dismiss="alert" aria-label="Close"></button> */}
+                        <button className="btn-close " onClick={() => {clearFilterByDate()}} type="button" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>
             }
+
+            <div className="col-12 mt-4">
+                <table className="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Tanggal Transaksi</th>
+                            <th>Total Harga</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            dataRiwayat.length > 0 &&
+                            dataRiwayat.map((item:any) => {
+                                return(
+                                    <tr key={item.kode_transaksi}>
+                                        <td>{moment(item.kode_transaksi.split('#')[0]).format('MMMM Do YYYY, h:mm:ss a')}</td>
+                                        <td>Rp. {item.total_harga_transaksi}</td>
+                                        <td>
+                                            <a href="#!" onClick={() => {getTransaksi(item)}} data-bs-toggle="modal" data-bs-target="#lihatRiwayatPembelian">Lihat</a>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            {/* Modal Pop Up Riwayat Pembelian */}
+            <div className="modal fade" id="lihatRiwayatPembelian" tabIndex={-1} aria-labelledby="lihatRiwayatPembelianLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg">
+                    <div className="modal-content">
+                        <div className="modal-header blue text-white">
+                            <h5 className="modal-title" id="lihatRiwayatPembelianLabel">Riwayat Pembelian</h5>
+                            <button className="btn-close" type="button" data-bs-dismiss ="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="row">
+                                <div className="col-6">
+                                    <b onClick={()=>{console.log(transaksi)}}> Nama Pembeli</b>
+                                </div>
+                                <div className="col-6">
+                                    <b>Tanggal Transaksi</b> <br/>
+                                    {itemTransaksi && moment(itemTransaksi[0].item.tanggal_transaksi).format('MMMM Do YYYY')}
+                                </div>
+                                <div className="col-12 mt-4">
+                                    <b>Keterangan</b>
+                                </div>
+                            </div>
+                            <div className="row mt-5">
+                                <div className="table-responsive">
+                                    <table className="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Barang</th>
+                                                <th>Kode Barang</th>
+                                                <th>Harga</th>
+                                                <th>Stok</th>
+                                                <th>Jumlah Beli</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                itemTransaksi &&
+                                                itemTransaksi.map((item:any)=>{
+                                                    return(
+                                                        <tr key={item.item.kode_barang}>
+                                                            <td>{item.item.kode_barang}</td>
+                                                            <td>{item.item.nama_barang}</td>
+                                                            <td>{item.item.harga_barang}</td>
+                                                            <td>{item.item.jumlah_barang}</td>
+                                                            <td>{item.item.jumlah_beli}</td>
+                                                        </tr>
+                                                    )
+                                                })
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12">
+                                    <h3>Total harga : Rp. {transaksi && transaksi.total_harga_transaksi}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss ="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+
         </div>
     )
 
