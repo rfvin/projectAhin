@@ -79,13 +79,18 @@ const Login: FC = () => {
                                     />
                                 </div>
                                 <div className="form-group">
-
                                     <button className="btn btn-primary float-end mt-2" onClick={() => { handleLogin() }}>
                                         {inProcess ? "Mencoba masuk..." : "Masuk"}
                                     </button>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12 justify-content-center align-items-center d-flex" >
+                        <p>Pengguna baru?</p><br />
+                        <a href="">Daftar</a>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import THEME from "../Theme/theme";
 import '../index.css';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where } from "firebase/firestore";
-import { db } from "../firebase"
+import { db } from "../firebase";
+import '../Theme/theme.css';
 
 const Inventaris: FC = () => {
     const inventarisCollectionRef = collection(db, 'Inventaris')
@@ -190,8 +191,8 @@ const Inventaris: FC = () => {
                             isFilter &&
                             <div className="row mt-3">
                                 <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                                    Menampilkan hasil pencarian untuk 
-                                    <strong className="ms-2">{filter}</strong>
+                                    Rekomendasi hasil pencarian untuk barang
+                                    <strong className="ms-1">{filter}</strong>
                                     <button
                                         onClick={() => {
                                             removeSearch()
@@ -304,7 +305,7 @@ const Inventaris: FC = () => {
                                         <label htmlFor="" className="form-label">Harga</label>
                                         <div className="input-group">
                                             <span className="input-group-text" id="inputGroupPrepend2">Rp.</span>
-                                            <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="number" className="form-control"
+                                            <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="integer" className="form-control"
                                                 onChange={(e) =>
                                                     setInventarisInput((prev: object) => ({
                                                         ...prev,
@@ -316,7 +317,7 @@ const Inventaris: FC = () => {
                                     </div>
                                     <div className="col-4">
                                         <label className="form-label">Jumlah Barang</label>
-                                        <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="number" className="form-control"
+                                        <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="integer" className="form-control"
                                             onChange={(e) => {
                                                 setInventarisInput((prev: object) => ({
                                                     ...prev,
@@ -337,7 +338,7 @@ const Inventaris: FC = () => {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button className="btn btn-primary" onClick={() => { addInventaris() }}>Simpan</button>
+                                <button disabled={!setInventarisInput} className="btn btn-primary" onClick={() => { addInventaris() }}>Simpan</button>
                             </div>
                         </div>
                     </div>
@@ -402,7 +403,7 @@ const Inventaris: FC = () => {
                                         <label htmlFor="" className="form-label">Harga</label>
                                         <div className="input-group">
                                             <span className="input-group-text" id="inputGroupPrepend2">Rp.</span>
-                                            <input min={1} value={inventarisInput.harga_barang} type="text" className="form-control"
+                                            <input min={1} value={inventarisInput.harga_barang} type="integer" className="form-control"
                                                 onChange={(e) => {
                                                     setInventarisInput((prev: object) => ({
                                                         ...prev,
@@ -413,7 +414,7 @@ const Inventaris: FC = () => {
                                     </div>
                                     <div className="col-4">
                                         <label className="form-label">Jumlah Barang</label>
-                                        <input min={1} value={inventarisInput.jumlah_barang} type="number" className="form-control"
+                                        <input min={1} value={inventarisInput.jumlah_barang} type="integer" className="form-control"
                                             onChange={(e) => {
                                                 setInventarisInput((prev: object) => ({
                                                     ...prev,
@@ -434,42 +435,27 @@ const Inventaris: FC = () => {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button className="btn btn-danger" data-bs-target="#konfirmasiHapus">Hapus</button>
+                                <button className="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#konfirmasiHapus">Hapus</button>
                                 <button className="btn btn-primary" onClick={() => { editInventaris() }}>Simpan</button>
                             </div>
-                        </div>
+                            <div className="row">
+                                <div className="col-12 p-5">
+                                    <div className="collapse" id="konfirmasiHapus">
+                                        <div className="card card-body text-white" style={{background:"red"}}>
+                                            Data yang sudah dihapus tidak dapat dikembalikan!
 
-                        {/* Modal Konfirmasi Hapus */}
-                        <div className="modal fade" id="konfirmasiHapus" tabIndex={-1}>
-                            <div className="modal-dialog modal-dialog-centered modal-lg">
-                                <div className="modal-content">
-                                    <div className="modal-body">
-                                        <p>Modal body text goes here.</p>
-                                    </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-primary">Save changes</button>
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* <div className="row">
-                            <div className="col-12 p-5">
-                                <div className="collapse" id="konfirmasiHapus">
-                                    <div className="card card-body theme-bg-red text-white">
-                                        Data yang sudah dihapus tidak dapat dikembalikan
-
-                                        <div className="col text-end">
-                                            <button type="button" className="btn btn-primary me-2" data-bs-toggle="collapse" data-bs-target="#konfirmasiHapus">
-                                                Batal
-                                            </button>
-                                            <button type="button" className="btn btn-light" onClick={() => { deleteInventaris() }}>Hapus</button>
+                                            <div className="col text-end mt-5">
+                                                <button type="button" className="btn btn-primary me-2"
+                                                        data-bs-toggle="collapse"
+                                                        data-bs-target="#konfirmasiHapus">Batal
+                                                </button>
+                                                <button type="button" className="btn btn-light" style={{color:"red"}} onClick={() => {deleteInventaris()}}>Hapus</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
 

@@ -51,7 +51,7 @@ const Transaksi = () => {
         const querySnapshot = await getDocs(query_inventaris)
         let search_result: any = []
         querySnapshot.forEach((doc) => {
-            search_result = [...search_result, [doc.data, doc.id]]
+            search_result = [...search_result, [doc.data(), doc.id]]
         });
         setInventaris(search_result)
     }
@@ -201,8 +201,8 @@ const Transaksi = () => {
                             isFilter &&
                             <div className="row mt-3">
                                 <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                                    Menampilkan hasil pencarian untuk 
-                                    <strong className="ms-2">{filter}</strong>
+                                Rekomendasi hasil pencarian untuk barang
+                                    <strong className="ms-1">{filter}</strong>
                                     <button
                                         onClick={() => {
                                             removeSearch()
