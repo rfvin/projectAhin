@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -60,12 +61,12 @@ const Login: FC = () => {
         <>
             <div className="container">
                 <div className="row">
-                    <div className="col-6 vh-100 justify-content-center align-items-center d-flex">
+                    <div className="col-6 justify-content-center align-items-center d-flex" style={{ marginTop: '300px' }}>
                         <div className="masuk">Masuk</div>
                     </div>
-                    <div className="col-6 vh-100">
+                    <div className="col-6" style={{ marginTop: '360px' }}>
                         <div className="row justify-content-center">
-                            <div className="col-8" style={{ marginTop: '45vh' }}>
+                            <div className="col-8">
                                 <div className="form-group">
                                     {
                                         wrongPassword && <label htmlFor="" className="text-danger">Password Salah</label>
@@ -86,12 +87,14 @@ const Login: FC = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="row">
+                    <div className="row" style={{ marginTop: '100px' }}>
                     <div className="col-12 justify-content-center align-items-center d-flex" >
-                        <p>Pengguna baru?</p><br />
-                        <a href="">Daftar</a>
+                        <p>Pengguna baru?</p><br/>
                     </div>
+                    <Link to="/" className=" d-flex justify-content-center">
+                            Daftar
+                        </Link>
+                </div>
                 </div>
             </div>
         </>

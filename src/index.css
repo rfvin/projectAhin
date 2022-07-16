@@ -3,6 +3,12 @@
   font-weight: bold;
 }
 
+.daftar{
+  font-size: 96px;
+  font-weight: bold;
+  margin-top: 200px;
+}
+
 button {
   border-radius: 7.5px !important;
   width: 200px;

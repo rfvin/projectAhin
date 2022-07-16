@@ -5,6 +5,7 @@ import Admin from "../halaman/admin";
 import Laporan from "../halaman/laporan/laporan";
 import Inventaris from "../halaman/inventaris";
 import Transaksi from "../halaman/transaksi";
+import Landing_Page from "../halaman/landing_page";
 import ProtectedRoutes from "./protected_routes";
 
 const RouterPath =  () => {
@@ -34,7 +35,13 @@ const RouterPath =  () => {
                         <Admin/>
                         </ProtectedRoutes>
                     }/>
-                    <Route path="/" element = {
+                    <Route path="/" element={
+                        <Landing_Page/>
+                    }>
+
+                    </Route>
+
+                    <Route path="/login" element = {
                         <Login/>
                     }/>
             </Routes>
