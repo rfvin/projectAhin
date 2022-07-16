@@ -305,11 +305,12 @@ const Inventaris: FC = () => {
                                         <label htmlFor="" className="form-label">Harga</label>
                                         <div className="input-group">
                                             <span className="input-group-text" id="inputGroupPrepend2">Rp.</span>
-                                            <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="integer" className="form-control"
+                                            <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="number" className="form-control"
                                                 onChange={(e) =>
                                                     setInventarisInput((prev: object) => ({
                                                         ...prev,
                                                         harga_barang: e.target.value
+                                                        
                                                     }))
                                                 } />
                                         </div>
@@ -317,7 +318,7 @@ const Inventaris: FC = () => {
                                     </div>
                                     <div className="col-4">
                                         <label className="form-label">Jumlah Barang</label>
-                                        <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="integer" className="form-control"
+                                        <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="number" className="form-control"
                                             onChange={(e) => {
                                                 setInventarisInput((prev: object) => ({
                                                     ...prev,
@@ -403,7 +404,7 @@ const Inventaris: FC = () => {
                                         <label htmlFor="" className="form-label">Harga</label>
                                         <div className="input-group">
                                             <span className="input-group-text" id="inputGroupPrepend2">Rp.</span>
-                                            <input min={1} value={inventarisInput.harga_barang} type="integer" className="form-control"
+                                            <input min={1} value={inventarisInput.harga_barang} type="number" className="form-control"
                                                 onChange={(e) => {
                                                     setInventarisInput((prev: object) => ({
                                                         ...prev,
@@ -414,7 +415,7 @@ const Inventaris: FC = () => {
                                     </div>
                                     <div className="col-4">
                                         <label className="form-label">Jumlah Barang</label>
-                                        <input min={1} value={inventarisInput.jumlah_barang} type="integer" className="form-control"
+                                        <input min={1} value={inventarisInput.jumlah_barang} type="number" className="form-control"
                                             onChange={(e) => {
                                                 setInventarisInput((prev: object) => ({
                                                     ...prev,
