@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import '../index.css';
 import { Link } from "react-router-dom";
 import '../Theme/theme.css';
 
+
+
 const Landing_Page = () => {
+    
+    const [username , setUsername] = useState(null);
+    const [password,setPassword] = useState(null)
+
+
+
+
     return (
         <div className="container">
             <div className="row">
@@ -21,7 +30,7 @@ const Landing_Page = () => {
             <div className="row d-flex justify-content-center">
                 <div className="col-4">
                 <label htmlFor=""  className="form-label mt-5">Username :     </label>
-                    <input type="text" maxLength={12} className="form-control"  placeholder="Username"/>
+                    <input type="text" maxLength={12} className="form-control" placeholder="Username"/>
 
                     <label htmlFor="" className="form-label mt-3">Password :     </label>
                     <input type="password" maxLength={12} className="form-control"  placeholder="Password"/>

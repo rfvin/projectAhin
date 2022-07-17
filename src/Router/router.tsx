@@ -35,13 +35,13 @@ const RouterPath =  () => {
                         <Admin/>
                         </ProtectedRoutes>
                     }/>
-                    <Route path="/" element={
+                    <Route path="/register" element={
                         <Landing_Page/>
                     }>
 
                     </Route>
 
-                    <Route path="/login" element = {
+                    <Route path="/" element = {
                         <Login/>
                     }/>
             </Routes>
