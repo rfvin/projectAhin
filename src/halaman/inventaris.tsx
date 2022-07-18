@@ -124,7 +124,7 @@ const Inventaris: FC = () => {
                     .then(() => {
                         clearInput()
                         getInventaris()
-                        successAdd()
+                        successUpdate()
                    
                     })
                     .catch(err => { console.log(err) })
@@ -159,6 +159,8 @@ const Inventaris: FC = () => {
             'merek_barang': obj.merek_barang,
         }))
     }
+
+    
 
     useEffect(() => {
         getInventaris()
@@ -250,98 +252,102 @@ const Inventaris: FC = () => {
                 <div className="modal fade" id="modalTambahBarang" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered modal-lg">
                         <div className="modal-content">
+                            
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Tambah Barang</h5>
-                                <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                <div className="row">
-                                    <div className="col-6">
-                                        <label htmlFor="" className="form-label">Nama Barang</label>
-                                        <input maxLength={25} type="text" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    nama_barang: e.target.value
-                                                }))
-                                            }} />
-                                    </div>
-                                    <div className="col-6">
-                                        <label htmlFor="" className="form-label">Kode Barang</label>
-                                        <input maxLength={8} type="text" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    kode_barang: e.target.value
-                                                }))
-                                            }} />
-                                    </div>
+                                    <h5 className="modal-title" id="exampleModalLabel">Tambah Barang</h5>
+                                    <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div className="row mt-3">
-                                    <div className="col-6">
-                                        <label htmlFor="" className="form-label">Merek Barang</label>
-                                        <input maxLength={10} type="text" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    merek_barang: e.target.value
-                                                }))
-                                            }}
-                                        />
-                                    </div>
-                                    <div className="col-6">
-                                        <label htmlFor="" className="form-label">Nama Supplier</label>
-                                        <input maxLength={20} type="text" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    nama_supplier: e.target.value
-                                                }))
-                                            }} />
-                                    </div>
-
-                                </div>
-                                <div className="row mt-3">
-                                    <div className="col-6">
-                                        <label htmlFor="" className="form-label">Harga</label>
-                                        <div className="input-group">
-                                            <span className="input-group-text" id="inputGroupPrepend2">Rp.</span>
-                                            <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="number" className="form-control"
-                                                onChange={(e) =>
+                                <form className="form" onSubmit={(e) => {e.preventDefault()}}>
+                                <div className="modal-body">
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <label htmlFor="" className="form-label">Nama Barang</label>
+                                            <input maxLength={25} type="text" className="form-control"
+                                                onChange={(e) => {
                                                     setInventarisInput((prev: object) => ({
                                                         ...prev,
-                                                        harga_barang: e.target.value
-                                                        
+                                                        nama_barang: e.target.value
                                                     }))
-                                                } />
+                                                }} />
+                                        </div>
+                                        <div className="col-6">
+                                            <label htmlFor="" className="form-label">Kode Barang</label>
+                                            <input maxLength={8} type="text" className="form-control"
+                                                onChange={(e) => {
+                                                    setInventarisInput((prev: object) => ({
+                                                        ...prev,
+                                                        kode_barang: e.target.value
+                                                    }))
+                                                }} />
+                                        </div>
+                                    </div>
+                                    <div className="row mt-3">
+                                        <div className="col-6">
+                                            <label htmlFor="" className="form-label">Merek Barang</label>
+                                            <input maxLength={10} type="text" className="form-control"
+                                                onChange={(e) => {
+                                                    setInventarisInput((prev: object) => ({
+                                                        ...prev,
+                                                        merek_barang: e.target.value
+                                                    }))
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="col-6">
+                                            <label htmlFor="" className="form-label">Nama Supplier</label>
+                                            <input maxLength={20} type="text" className="form-control"
+                                                onChange={(e) => {
+                                                    setInventarisInput((prev: object) => ({
+                                                        ...prev,
+                                                        nama_supplier: e.target.value
+                                                    }))
+                                                }} />
                                         </div>
 
                                     </div>
-                                    <div className="col-4">
-                                        <label className="form-label">Jumlah Barang</label>
-                                        <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="number" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    jumlah_barang: e.target.value
-                                                }))
-                                            }} />
-                                    </div>
-                                    <div className="col-2">
-                                        <label className="form-label">Satuan</label>
-                                        <input maxLength={5} type="text" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    jumlah_barang: e.target.value
-                                                }))
-                                            }} />
+                                    <div className="row mt-3">
+                                        <div className="col-6">
+                                            <label htmlFor="" className="form-label">Harga</label>
+                                            <div className="input-group">
+                                                <span className="input-group-text" id="inputGroupPrepend2">Rp.</span>
+                                                <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="number" className="form-control"
+                                                    onChange={(e) =>
+                                                        setInventarisInput((prev: object) => ({
+                                                            ...prev,
+                                                            harga_barang: e.target.value
+                                                            
+                                                        }))
+                                                    } />
+                                            </div>
+
+                                        </div>
+                                        <div className="col-4">
+                                            <label className="form-label">Jumlah Barang</label>
+                                            <input min={1} onInput={(e) => (e.target as HTMLInputElement).value = (e.target as HTMLInputElement).value.slice(0, 10)} type="number" className="form-control"
+                                                onChange={(e) => {
+                                                    setInventarisInput((prev: object) => ({
+                                                        ...prev,
+                                                        jumlah_barang: e.target.value
+                                                    }))
+                                                }} />
+                                        </div>
+                                        <div className="col-2">
+                                            <label className="form-label">Satuan</label>
+                                            <input maxLength={5} type="text" className="form-control"
+                                                onChange={(e) => {
+                                                    setInventarisInput((prev: object) => ({
+                                                        ...prev,
+                                                        jumlah_barang: e.target.value
+                                                    }))
+                                                }} />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="modal-footer">
-                                <button disabled={!setInventarisInput} className="btn btn-primary" onClick={() => { addInventaris() }}>Simpan</button>
-                            </div>
+                                </form>
+                                <div className="modal-footer">
+                                    <button disabled={!setInventarisInput} className="btn btn-primary" onClick={() => { addInventaris() }}>Simpan</button>
+                                </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -351,95 +357,98 @@ const Inventaris: FC = () => {
                     aria-labelledby="modalDetailBarangLabel" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered modal-lg">
                         <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Detail Barang</h5>
-                                <button className="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                <div className="row">
-                                    <div className="col-6">
-                                        <label htmlFor="" className="form-label">Nama Barang</label>
-                                        <input maxLength={25} value={inventarisInput.nama_barang} type="text" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    nama_barang: e.target.value
-                                                }))
-                                            }} />
+                                <div className="modal-header">
+                                        <h5 className="modal-title" id="exampleModalLabel">Detail Barang</h5>
+                                        <button className="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div className="col-6">
-                                        <label htmlFor="" className="form-label">Kode Barang</label>
-                                        <input maxLength={8} value={inventarisInput.kode_barang} type="text" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    kode_barang: e.target.value
-                                                }))
-                                            }} />
-                                    </div>
-                                </div>
-                                <div className="row mt-3">
-                                    <div className="col-6">
-                                        <label htmlFor="" className="form-label">Merek Barang</label>
-                                        <input maxLength={10} value={inventarisInput.merek_barang} type="text" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    merek_barang: e.target.value
-                                                }))
-                                            }} />
-                                    </div>
-                                    <div className="col-6">
-                                        <label htmlFor="" className="form-label">Nama Supplier</label>
-                                        <input maxLength={20} value={inventarisInput.nama_supplier} type="text" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    nama_supplier: e.target.value
-                                                }))
-                                            }} />
-                                    </div>
-                                </div>
-                                <div className="row mt-3">
-                                    <div className="col-6">
-                                        <label htmlFor="" className="form-label">Harga</label>
-                                        <div className="input-group">
-                                            <span className="input-group-text" id="inputGroupPrepend2">Rp.</span>
-                                            <input min={1} value={inventarisInput.harga_barang} type="number" className="form-control"
-                                                onChange={(e) => {
-                                                    setInventarisInput((prev: object) => ({
-                                                        ...prev,
-                                                        harga_barang: e.target.value
-                                                    }))
-                                                }} />
+                                    <form className="form">
+                                    <div className="modal-body">
+                                        <div className="row">
+                                            <div className="col-6">
+                                                <label htmlFor="" className="form-label">Nama Barang</label>
+                                                <input maxLength={25} value={inventarisInput.nama_barang} type="text" className="form-control"
+                                                    onChange={(e) => {
+                                                        setInventarisInput((prev: object) => ({
+                                                            ...prev,
+                                                            nama_barang: e.target.value
+                                                        }))
+                                                    }} />
+                                            </div>
+                                            <div className="col-6">
+                                                <label htmlFor="" className="form-label">Kode Barang</label>
+                                                <input maxLength={8} value={inventarisInput.kode_barang} type="text" className="form-control"
+                                                    onChange={(e) => {
+                                                        setInventarisInput((prev: object) => ({
+                                                            ...prev,
+                                                            kode_barang: e.target.value
+                                                        }))
+                                                    }} />
+                                            </div>
+                                        </div>
+                                        <div className="row mt-3">
+                                            <div className="col-6">
+                                                <label htmlFor="" className="form-label">Merek Barang</label>
+                                                <input maxLength={10} value={inventarisInput.merek_barang} type="text" className="form-control"
+                                                    onChange={(e) => {
+                                                        setInventarisInput((prev: object) => ({
+                                                            ...prev,
+                                                            merek_barang: e.target.value
+                                                        }))
+                                                    }} />
+                                            </div>
+                                            <div className="col-6">
+                                                <label htmlFor="" className="form-label">Nama Supplier</label>
+                                                <input maxLength={20} value={inventarisInput.nama_supplier} type="text" className="form-control"
+                                                    onChange={(e) => {
+                                                        setInventarisInput((prev: object) => ({
+                                                            ...prev,
+                                                            nama_supplier: e.target.value
+                                                        }))
+                                                    }} />
+                                            </div>
+                                        </div>
+                                        <div className="row mt-3">
+                                            <div className="col-6">
+                                                <label htmlFor="" className="form-label">Harga</label>
+                                                <div className="input-group">
+                                                    <span className="input-group-text" id="inputGroupPrepend2">Rp.</span>
+                                                    <input min={1} value={inventarisInput.harga_barang} type="number" className="form-control"
+                                                        onChange={(e) => {
+                                                            setInventarisInput((prev: object) => ({
+                                                                ...prev,
+                                                                harga_barang: e.target.value
+                                                            }))
+                                                        }} />
+                                                </div>
+                                            </div>
+                                            <div className="col-4">
+                                                <label className="form-label">Jumlah Barang</label>
+                                                <input min={1} value={inventarisInput.jumlah_barang} type="number" className="form-control"
+                                                    onChange={(e) => {
+                                                        setInventarisInput((prev: object) => ({
+                                                            ...prev,
+                                                            jumlah_barang: e.target.value
+                                                        }))
+                                                    }} />
+                                            </div>
+                                            <div className="col-2">
+                                                <label className="form-label">Satuan</label>
+                                                <input maxLength={5} value={inventarisInput.satuan_barang} type="text" className="form-control"
+                                                    onChange={(e) => {
+                                                        setInventarisInput((prev: object) => ({
+                                                            ...prev,
+                                                            satuan_barang: e.target.value
+                                                        }))
+                                                    }} />
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="col-4">
-                                        <label className="form-label">Jumlah Barang</label>
-                                        <input min={1} value={inventarisInput.jumlah_barang} type="number" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    jumlah_barang: e.target.value
-                                                }))
-                                            }} />
+                                    </form>
+                                    <div className="modal-footer">
+                                        <button className="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#konfirmasiHapus">Hapus</button>
+                                        <button className="btn btn-primary" onClick={() => { editInventaris() }}>Simpan</button>
                                     </div>
-                                    <div className="col-2">
-                                        <label className="form-label">Satuan</label>
-                                        <input maxLength={5} value={inventarisInput.satuan_barang} type="text" className="form-control"
-                                            onChange={(e) => {
-                                                setInventarisInput((prev: object) => ({
-                                                    ...prev,
-                                                    satuan_barang: e.target.value
-                                                }))
-                                            }} />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <button className="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#konfirmasiHapus">Hapus</button>
-                                <button className="btn btn-primary" onClick={() => { editInventaris() }}>Simpan</button>
-                            </div>
+                            
                             <div className="row">
                                 <div className="col-12 p-5">
                                     <div className="collapse" id="konfirmasiHapus">
