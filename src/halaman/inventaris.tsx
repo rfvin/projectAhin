@@ -107,14 +107,9 @@ const Inventaris: FC = () => {
             resolve(
                 addDoc(inventarisCollectionRef, inventarisInput)
                     .then((res) => {
-                        if(inventarisInput.isNotEmpty){
                             clearInput()
                             getInventaris()
                             successAdd()
-                        }else{
-                            console.log("Can't Empty")
-                        }
-                        
                     })
                     .catch(err => console.log(err))
             )
@@ -126,14 +121,11 @@ const Inventaris: FC = () => {
         new Promise(resolve => {
             resolve(
                 updateDoc(InventarisCollection, inventarisInput)
-                    .then(() => 
-                    {if(inventarisInput.isNotEmpty){
+                    .then(() => {
                         clearInput()
                         getInventaris()
                         successAdd()
-                    }else{
-                        console.log("Can't Empty")
-                    }
+                   
                     })
                     .catch(err => { console.log(err) })
             )
