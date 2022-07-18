@@ -48,7 +48,7 @@ const Landing_Page = () => {
             </div>
             <div className="row">
                 <h5 className="text-center mt-5">Sudah Daftar? <br/>
-                    <Link to="/login">
+                    <Link to="/">
                         Masuk
                     </Link>
                 </h5>
