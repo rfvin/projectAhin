@@ -77,14 +77,17 @@ const DaftarPiutang : FC = () =>{
                             dataPiutang.map((item:any) => {
                                 item[0].id = item[1]
 
+                            console.log("dataPiutang",dataPiutang)
+                            console.log("item[0]",item[0])
+
                                 return(
                                     <tr key={item[0].kode_transaksi}>
-                                        <td>{moment(item[0].kode_transaksi.split('#')[0]).format('MMMM Do YYYY, h:mm:ss a')}</td>
-                                        <td>Rp. {item[0].total_harga_transaksi}</td>
-                                        <td>
-                                            <a href="#!" onClick={()=>{getTransaksi(item[0])}} data-bs-toggle="modal" data-bs-target="#lihatRiwayatPembelian">Lihat</a>
-                                        </td>
-                                    </tr>
+                                    <td>{moment(item[0].kode_transaksi.split('#')[0]).format('MMMM Do YYYY, h:mm:ss a')}</td>
+                                    <td>Rp. {item[0].total_harga_transaksi}</td>
+                                    <td>
+                                        <a onClick={() => {getTransaksi(item[0])}} href="#!"data-bs-toggle="modal" data-bs-target="#lihatRiwayatPembelian">Lihat</a>
+                                    </td>
+                                </tr>
                                 )
                             })
                         }
@@ -103,14 +106,15 @@ const DaftarPiutang : FC = () =>{
                                     <div className="modal-body">
                                         <div className="row">
                                             <div className="col-6">
-                                                <b>Nama Pembeli : </b> <br/>
-                                                {itemTransaksi && moment(itemTransaksi[0].item.tanggal.transaksi).format('MMMM Do YYYY')}
+                                                <b>Nama Pembeli</b> <br/>
+                                                {transaksi && transaksi.nama_pembeli}
                                             </div>
                                             <div className="col-6">
-                                                <b>Tanggal Transaksi :</b>
+                                                <b>Tanggal Transaksi</b> <br/>
+                                                {itemTransaksi && moment(itemTransaksi[0].item.tanggal_transaksi).format('MMMM Do YYYY')}
                                             </div>
                                             <div className="col-12 mt-4">
-                                                <b>Keterangan</b> <br/>
+                                                <b>Keterangan</b><br/>
                                                 {transaksi && transaksi.keterangan}
                                             </div>
                                         </div>
@@ -118,11 +122,13 @@ const DaftarPiutang : FC = () =>{
                                             <div className="table-responsive">
                                                 <table className="table table-bordered">
                                                     <thead>
-                                                        <tr>Nama Barang</tr>
-                                                        <tr>Kode barang</tr>
-                                                        <tr>Harga</tr>
-                                                        <tr>Stok</tr>
-                                                        <tr>Jumlah Beli</tr>
+                                                        <tr>
+                                                        <th>Nama Barang</th>
+                                                        <th>Kode barang</th>
+                                                        <th>Harga</th>
+                                                        <th>Stok</th>
+                                                        <th>Jumlah Beli</th>
+                                                        </tr>
                                                     </thead>
                                                     <tbody>
                                                         {
