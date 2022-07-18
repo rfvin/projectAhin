@@ -91,7 +91,7 @@ const Login: FC = () => {
                     <div className="col-12 justify-content-center align-items-center d-flex" >
                         <p>Pengguna baru?</p><br/>
                     </div>
-                    <Link to="/" className=" d-flex justify-content-center">
+                    <Link to="/register" className=" d-flex justify-content-center">
                             Daftar
                         </Link>
                 </div>
