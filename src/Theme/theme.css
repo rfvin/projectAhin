@@ -1,3 +1,4 @@
+/* Warna */
 .blue {
     background: #007AFF;
 }
@@ -10,13 +11,17 @@
     background: #34C759;
 }
 
-.theme-bg-green{
-    background: #34C759;
+/* Elemen */
+input.checkbox {
+    height: 13px;
+    width: 13px;
+    accent-color: #007AFF;
+
 }
 
-input.checkbox {
-	height: 13px;
-	width: 13px
+.title {
+    font-size: 96px;
+    font-weight: bold;
 }
 
 /* Icon */
@@ -26,13 +31,15 @@ i {
 
 /* Table */
 .table-wrapper {
-    max-height: 75vh;
+    max-height: 60vh;
     overflow: auto;
     display: inline-block;
 }
 
 /* Toast */
-.toast-update, .toast-tambah, .toast-hapus{
+.toast-update,
+.toast-tambah,
+.toast-hapus {
     background: #007AFF;
     padding: 20px;
     text-align: center;
@@ -45,10 +52,11 @@ i {
     box-shadow: 0 0 10px #007AFF;
 }
 
-.toast-tambah{
+.toast-tambah {
     background: #34C759;
 }
-.toast-hapus{
+
+.toast-hapus {
     background: #FF3B30;
 }
 

@@ -5,7 +5,7 @@ import '../../Theme/theme'
 import THEME from "../../Theme/theme";
 import HasilPenjualan from './hasil_penjualan';
 import DaftarPiutang from './daftar_piutang';
-import RiwayatPembelian from './riwayat_pembelian';
+import RiwayatPenjualan from './riwayat_penjualan';
 
 const Laporan = () => {
 
@@ -16,7 +16,7 @@ const Laporan = () => {
             case "Hasil Penjualan" :
                 return <HasilPenjualan/>
             case "Riwayat Pembelian" : 
-                return <RiwayatPembelian/> 
+                return <RiwayatPenjualan/> 
             case "Daftar Piutang" :
                 return <DaftarPiutang/>
             default : 

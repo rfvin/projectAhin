@@ -4,6 +4,7 @@ import { db } from "../firebase";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import '../index.css';
 
 const Login: FC = () => {
     const AdminCollectionRef = collection(db, 'admin')
@@ -11,10 +12,14 @@ const Login: FC = () => {
     const [wrongPassword, setwrongPassword] = useState<boolean>(false)
 
     interface UserinputProps {
+        username: string
         password: string
     }
 
-    const [Userinput, setUserinput] = useState<UserinputProps>({ password: "" })
+    const [Userinput, setUserinput] = useState<UserinputProps>({ 
+        username: "",
+        password: "" 
+    })
 
     const clearProcess = () => {
         setUserinput((prev: UserinputProps) => ({
@@ -24,12 +29,9 @@ const Login: FC = () => {
         setInProcess(false)
     }
 
-    const loginfailed = () => {
+    const loginfailed = async () => {
         setwrongPassword(true)
         setInProcess(false)
-        setTimeout(() => {
-            setwrongPassword(false)
-        }, 2000)
     }
 
     useEffect(() => {
@@ -43,7 +45,7 @@ const Login: FC = () => {
         await getDocs(AdminCollectionRef)
             .then((res: any) => {
                 res.docs.map((doc: any) => {
-                    if (doc.data().password === Userinput.password) {
+                    if (doc.data().username === Userinput.username && doc.data().password === Userinput.password) {
                         success = true
                         localStorage.setItem("auth", doc.data().password)
                         window.location.href = '/inventaris'
@@ -61,16 +63,23 @@ const Login: FC = () => {
         <>
             <div className="container">
                 <div className="row">
-                    <div className="col-6 justify-content-center align-items-center d-flex" style={{ marginTop: '300px' }}>
-                        <div className="masuk">Masuk</div>
+                    <div className="col-6 justify-content-center align-items-center d-flex" style={{ marginTop: '45vh' }}>
+                        <h1 className="title">Masuk</h1>
                     </div>
-                    <div className="col-6" style={{ marginTop: '360px' }}>
+                    <div className="col-6" style={{ marginTop: '45vh' }}>
                         <div className="row justify-content-center">
                             <div className="col-8">
                                 <div className="form-group">
                                     {
-                                        wrongPassword && <label htmlFor="" className="text-danger">Password Salah</label>
+                                        wrongPassword && <label htmlFor="" className="text-danger">Username atau password salah.</label>
                                     }
+                                    <input type="text" placeholder="Username" className="form-control mt-2" onChange={(e) => {
+                                        setUserinput((prev: UserinputProps) => ({
+                                            ...prev,
+                                            username: e.target.value
+                                        }))
+                                    }}
+                                    />
                                     <input type="password" placeholder="Password" className="form-control mt-2" onChange={(e) => {
                                         setUserinput((prev: UserinputProps) => ({
                                             ...prev,
@@ -87,14 +96,15 @@ const Login: FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="row" style={{ marginTop: '100px' }}>
-                    <div className="col-12 justify-content-center align-items-center d-flex" >
-                        <p>Pengguna baru?</p><br/>
+                    <div className="row" style={{ marginTop: '25vh' }}>
+                        <div className="col-12 justify-content-center align-items-center d-flex" >
+                            <h5>Pengguna baru?<br />
+                                <Link to="/register" className="d-flex justify-content-center">
+                                    Daftar
+                                </Link>
+                            </h5>
+                        </div>
                     </div>
-                    <Link to="/register" className=" d-flex justify-content-center">
-                            Daftar
-                        </Link>
-                </div>
                 </div>
             </div>
         </>

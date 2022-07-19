@@ -28,7 +28,7 @@ const Inventaris: FC = () => {
 
     const searchInventaris = async () => {
         setIsFilter(true)
-        const query_inventaris = query(inventarisCollectionRef, where("nama_barang", ">=", filter))
+        const query_inventaris = query(inventarisCollectionRef, where("nama_barang", ">=", filter.toUpperCase()))
         const querySnapshot = await getDocs(query_inventaris)
         let search_result: any = []
         querySnapshot.forEach((doc) => {
@@ -160,8 +160,6 @@ const Inventaris: FC = () => {
         }))
     }
 
-    
-
     useEffect(() => {
         getInventaris()
     }, [])
@@ -169,14 +167,14 @@ const Inventaris: FC = () => {
     return (
         <THEME toast={toast} title={"Inventaris"} subtitle={"Lihat, edit, dan kelola barang pada toko."}>
             <>
-                <div className="row mt-5">
+                <div className="row mt-5 noscroll" style={{maxHeight:'100vh'}}>
                     <div className="col-12">
                         <div className="row justify-content-between">
                             <div className="col-4 d-flex align-items-center">
-                                <span>Menampilkan {inventaris.length} barang</span><br />
+                                <span>Menampilkan <b>{inventaris.length}</b> barang</span><br />
                             </div>
                             <div className="col-4 d-flex">
-                                <input type="text" className="form-control form-control-lg text-uppercase"
+                                <input type="text" className="form-control form-control-lg"
                                     placeholder="Cari Barang..."
                                     aria-label=""
                                     onChange={(e) => {
@@ -243,7 +241,7 @@ const Inventaris: FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 justify-content-center">
+                    <div className="mt-3 col-12 justify-content-center">
                         <button className="btn-primary center" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">Tambah Barang</button>
                     </div>
                 </div>

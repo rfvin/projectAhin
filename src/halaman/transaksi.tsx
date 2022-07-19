@@ -47,7 +47,7 @@ const Transaksi = () => {
 
     const searchInventaris = async () => {
         setIsFilter(true)
-        const query_inventaris = query(inventarisCollectionRef, where("nama_barang", ">=", filter))
+        const query_inventaris = query(inventarisCollectionRef, where("nama_barang", ">=", filter.toUpperCase()))
         const querySnapshot = await getDocs(query_inventaris)
         let search_result: any = []
         querySnapshot.forEach((doc) => {
@@ -181,10 +181,10 @@ const Transaksi = () => {
                     <div className="col-12">
                         <div className="row justify-content-between">
                             <div className="col-4 d-flex align-items-center">
-                                <span>Menampilkan {inventaris.length} barang</span> <br />
+                                <span>Menampilkan <b>{inventaris.length}</b> barang</span> <br />
                             </div>
                             <div className="col-4 d-flex">
-                                <input className="form-control form-control-lg text-uppercase" type="text"
+                                <input className="form-control form-control-lg" type="text"
                                     placeholder="Cari Barang..."
                                     aria-label=".form-control-lg example"
                                     onChange={(e) => {
