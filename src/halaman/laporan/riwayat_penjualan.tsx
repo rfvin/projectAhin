@@ -4,7 +4,7 @@ import {db} from "../../firebase";
 import moment from "moment";
 
 const RiwayatPembelian : FC = () =>{
-    const riwayatPenjualanRef = collection(db , 'riwayat_penjualan');
+    const riwayatPembelianRef = collection(db , 'riwayat_pembelian');
     const[dataRiwayat,setDataRiwayat] = useState<any>([])
     const[itemTransaksi,setItemTransaksi] = useState<any>()
     const[transaksi,setTransaksi] = useState<any>()
@@ -18,9 +18,9 @@ const RiwayatPembelian : FC = () =>{
     const [dateFilter,setDateFilter] = useState<dateProps>({'date_from' : '' , 'date_to' : ''})
     const [isFilter,setIsFilter] = useState<boolean>(false)
 
-    const getRiwayatPenjualan = async() => {
+    const getRiwayatPembelian = async() => {
         //coding dibawah function yang sifatnya async menunggu dijalnkan setelah function selesai
-        await getDocs(riwayatPenjualanRef)
+        await getDocs(riwayatPembelianRef)
             .then(res=>{
                 //data ada didalam res.doc.map
                 setDataRiwayat([...res.docs.map(doc => doc.data())])
@@ -38,7 +38,7 @@ const RiwayatPembelian : FC = () =>{
 
     const filterByDate = async () => {
         let tmp_filter_data: any = []
-        await getDocs(riwayatPenjualanRef)
+        await getDocs(riwayatPembelianRef)
             .then(res => {
                 setIsFilter(true)
                 res.docs.map(doc =>{
@@ -66,7 +66,7 @@ const RiwayatPembelian : FC = () =>{
     }
 
     useEffect(() => {
-        getRiwayatPenjualan()
+        getRiwayatPembelian()
     },[])
 
     return(
