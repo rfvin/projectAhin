@@ -48,7 +48,7 @@ const Landing_Page = () => {
             </div>
             <div className="row d-flex justify-content-center">
                 <div className="col-4 center">
-                    <button className="mt-2 btn btn-primary">Daftar</button>
+                <Link to="/pemulihan"><button className="mt-2 btn btn-primary"> Lanjut </button></Link>
                 </div>
             </div>
             <div className="row">

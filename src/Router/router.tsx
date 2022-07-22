@@ -7,6 +7,9 @@ import Inventaris from "../halaman/inventaris";
 import Transaksi from "../halaman/transaksi";
 import Landing_Page from "../halaman/landing_page";
 import ProtectedRoutes from "./protected_routes";
+import Lupa_Password from "../halaman/lupa_password";
+import Pemulihan from "../halaman/pemulihan";
+
 
 const RouterPath =  () => {
     return(
@@ -38,8 +41,16 @@ const RouterPath =  () => {
                     <Route path="/register" element={
                         <Landing_Page/>
                     }>
-
                     </Route>
+
+                    <Route path="/lupa_password" element={
+                        <Lupa_Password/>
+                    }>
+                    </Route>
+
+                    <Route path="/pemulihan" element={
+                        <Pemulihan/>
+                    }></Route>
 
                     <Route path="/" element = {
                         <Login/>

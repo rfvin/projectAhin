@@ -71,7 +71,9 @@ const Login: FC = () => {
                             <div className="col-8">
                                 <div className="form-group">
                                     {
-                                        wrongPassword && <label htmlFor="" className="text-danger">Username atau password salah.</label>
+                                        wrongPassword && <label htmlFor="" className="text-danger">Username atau password salah. 
+                                        <Link to="/lupa_password"> Lupa Password? </Link>
+                                        </label>
                                     }
                                     <input type="text" placeholder="Username" className="form-control mt-2" onChange={(e) => {
                                         setUserinput((prev: UserinputProps) => ({
