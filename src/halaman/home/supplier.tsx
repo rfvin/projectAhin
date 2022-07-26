@@ -7,7 +7,7 @@ import '../../index.css';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where } from "firebase/firestore";
 import { db } from "../../firebase";
 
-const Customer: FC = () =>{
+const Supplier: FC = () =>{
     const [toast, setToast] = useState<string>("")
 
     // Filter
@@ -120,4 +120,4 @@ const Customer: FC = () =>{
         </THEME>
     )
 }
-export default Customer
+export default Supplier

@@ -4,7 +4,7 @@ import Login from "../halaman/login";
 import Admin from "../halaman/admin";
 import Laporan from "../halaman/laporan/laporan";
 import Inventaris from "../halaman/home/inventaris";
-import Supplier from "../halaman/home/suppplier";
+import Supplier from "../halaman/home/supplier";
 import Customer from "../halaman/home/customer";
 import Transaksi from "../halaman/transaksi";
 import Daftar from "../halaman/daftar";

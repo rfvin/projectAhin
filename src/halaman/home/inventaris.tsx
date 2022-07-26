@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import THEME from "../../Theme/theme";
+import { Link,useLocation } from "react-router-dom";
 import '../../index.css';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -159,6 +160,8 @@ const Inventaris: FC = () => {
         }))
     }
 
+    const Route = useLocation();
+
     useEffect(() => {
         getInventaris()
     }, [])
@@ -166,26 +169,44 @@ const Inventaris: FC = () => {
     return (
         <THEME toast={toast} title={"Inventaris"} subtitle={"Lihat, edit, dan kelola barang pada toko."}>
             <>
-                <div className="row mt-5 noscroll" style={{maxHeight:'100vh'}}>
-                    <div className="col-12">
-                        <div className="row justify-content-between">
-                            <div className="col-4 d-flex align-items-center">
-                                <span>Menampilkan <b>{inventaris.length}</b> barang</span><br />
-                            </div>
-                            <div className="col-4 d-flex">
-                                <input type="text" className="form-control form-control-lg"
-                                    placeholder="Cari Barang..."
-                                    aria-label=""
-                                    onChange={(e) => {
-                                        setFilter(e.target.value)
-                                    }}
-                                    defaultValue={filter}
-                                />
-                                <button onClick={() => {
-                                    searchInventaris()
+            <div className="row">
+                <div className="row justify-content-end">
+                     <div className="col-4 d-flex">
+                            <input type="text" className="form-control form-control-lg"
+                                placeholder="Cari Barang..."
+                                aria-label=""
+                                onChange={(e) => {
+                                    setFilter(e.target.value)
+                            }}
+                                defaultValue={filter}
+                            />
+                            <button onClick={() => {
+                                searchInventaris()
                                 }}
                                     className="btn btn-primary ms-2">Cari</button>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row noscroll" style={{maxHeight:'100vh'}}>
+                    <div className="col-12">
+                        
+                        <div className="row mt-5 d-flex align-items-center " id="topHomeNav">
+                            
+                                <div className="col-4 d-flex align-items-center ">
+                                <Link to="/inventaris"><button className="btn">Barang</button></Link>
+                                </div>
+                            
+                            
+                                <div className="col-4 d-flex align-items-center topHomeNavActive">
+                                <Link to="/supplier"><button className="btn">Supplier</button> </Link>
+                                </div>
+                           
+                            
+                                <div className="col-4 d-flex align-items-center topHomeNavActive">
+                                <Link to="/customer">  <button className="btn">Pembeli</button></Link>
+                                </div>
+                            
+                            
                         </div>
                         {
                             isFilter &&

@@ -147,3 +147,15 @@ i {
     color: white;
     font-weight: bold;
 }
+
+#topHomeNav{
+    border-bottom: black solid 1px;
+}
+
+.topHomeNavActive{
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom:#007AFF ;
+    cursor: pointer;
+    background: #fff;
+}

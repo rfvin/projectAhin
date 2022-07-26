@@ -34,7 +34,6 @@ const THEME: FC<Props> = ({ title, subtitle, children }) => {
                                 <span className="ms-5">Inventaris</span>
                             </div>
                         </Link>
-
                         <Link to="/transaksi">
                             <div
                                 className={`theme-sidebar-menu ${Route.pathname === '/transaksi' ? 'theme-sidebar-menu-active' : ''}`}>
