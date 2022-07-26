@@ -7,7 +7,7 @@ import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where } 
 import { db } from "../../firebase";
 
 const Inventaris: FC = () => {
-    const inventarisCollectionRef = collection(db, 'Inventaris')
+    const inventarisCollectionRef = collection(db, 'inventaris')
     const [inventaris, setInventaris] = useState<Array<object>>([])
     const [toast, setToast] = useState<string>("")
     const [inventarisInput, setInventarisInput] = useState<object | any>({

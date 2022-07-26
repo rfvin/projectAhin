@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import Login from "./halaman/login";
 import RouterPath from "./Router/router";
 import { Route } from "react-router";
-import Landing_Page from "./halaman/landing_page";
+import Daftar from "./halaman/daftar";
 
 
 const root = ReactDOM.createRoot(
