@@ -1,11 +1,10 @@
 import React, { FC, useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import THEME from "../Theme/theme";
-import '../index.css';
+import THEME from "../../Theme/theme";
+import '../../index.css';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, where } from "firebase/firestore";
-import { db } from "../firebase";
-import '../Theme/theme.css';
+import { db } from "../../firebase";
 
 const Inventaris: FC = () => {
     const inventarisCollectionRef = collection(db, 'Inventaris')

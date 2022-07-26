@@ -3,7 +3,9 @@ import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Login from "../halaman/login";
 import Admin from "../halaman/admin";
 import Laporan from "../halaman/laporan/laporan";
-import Inventaris from "../halaman/inventaris";
+import Inventaris from "../halaman/home/inventaris";
+import Supplier from "../halaman/home/suppplier";
+import Customer from "../halaman/home/customer";
 import Transaksi from "../halaman/transaksi";
 import Landing_Page from "../halaman/landing_page";
 import ProtectedRoutes from "./protected_routes";
@@ -21,6 +23,16 @@ const RouterPath =  () => {
                             <Inventaris/>
                         </ProtectedRoutes>
                         
+                    }/>
+                     <Route path="/customer" element = {
+                        <ProtectedRoutes>
+                        <Customer/>
+                        </ProtectedRoutes>
+                    }/>
+                     <Route path="/supplier" element = {
+                        <ProtectedRoutes>
+                        <Supplier/>
+                        </ProtectedRoutes>
                     }/>
                     <Route path="/transaksi" element = {
                         <ProtectedRoutes>
