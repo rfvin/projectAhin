@@ -5,7 +5,7 @@ import Admin from "../halaman/admin";
 import Laporan from "../halaman/laporan/laporan";
 import Inventaris from "../halaman/inventaris";
 import Transaksi from "../halaman/transaksi";
-import Landing_Page from "../halaman/landing_page";
+import Daftar from "../halaman/daftar";
 import ProtectedRoutes from "./protected_routes";
 import Lupa_Password from "../halaman/lupa_password";
 import Pemulihan from "../halaman/pemulihan";
@@ -15,7 +15,6 @@ const RouterPath =  () => {
     return(
         <BrowserRouter>
             <Routes>
-
                     <Route path="/inventaris" element = {
                         <ProtectedRoutes>
                             <Inventaris/>
@@ -38,8 +37,9 @@ const RouterPath =  () => {
                         <Admin/>
                         </ProtectedRoutes>
                     }/>
-                    <Route path="/register" element={
-                        <Landing_Page/>
+
+                    <Route path="/daftar" element={
+                        <Daftar/>
                     }>
                     </Route>
 

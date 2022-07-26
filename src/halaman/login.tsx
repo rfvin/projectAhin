@@ -21,14 +21,6 @@ const Login: FC = () => {
         password: "" 
     })
 
-    const clearProcess = () => {
-        setUserinput((prev: UserinputProps) => ({
-            ...prev,
-            password: ""
-        }))
-        setInProcess(false)
-    }
-
     const loginfailed = async () => {
         setwrongPassword(true)
         setInProcess(false)
@@ -71,8 +63,7 @@ const Login: FC = () => {
                             <div className="col-8">
                                 <div className="form-group">
                                     {
-                                        wrongPassword && <label htmlFor="" className="text-danger">Username atau password salah. 
-                                        <Link to="/lupa_password"> Lupa Password? </Link>
+                                        wrongPassword && <label htmlFor="" className="text-danger">Username atau password salah. <Link to="/lupa_password">Lupa Password?</Link>
                                         </label>
                                     }
                                     <input type="text" placeholder="Username" className="form-control mt-2" onChange={(e) => {
@@ -101,7 +92,7 @@ const Login: FC = () => {
                     <div className="row" style={{ marginTop: '25vh' }}>
                         <div className="col-12 justify-content-center align-items-center d-flex" >
                             <h5>Pengguna baru?<br />
-                                <Link to="/register" className="d-flex justify-content-center">
+                                <Link to="/daftar" className="d-flex justify-content-center">
                                     Daftar
                                 </Link>
                             </h5>

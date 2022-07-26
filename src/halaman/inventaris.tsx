@@ -8,7 +8,7 @@ import { db } from "../firebase";
 import '../Theme/theme.css';
 
 const Inventaris: FC = () => {
-    const inventarisCollectionRef = collection(db, 'Inventaris')
+    const inventarisCollectionRef = collection(db, 'inventaris')
     const [inventaris, setInventaris] = useState<Array<object>>([])
     const [toast, setToast] = useState<string>("")
     const [inventarisInput, setInventarisInput] = useState<object | any>({
