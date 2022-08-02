@@ -1,6 +1,6 @@
 {
-  "name": "inventaris",
-  "version": "0.1.0",
+  "name": "Inventaris",
+  "version": "beta",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.0.5",
     "bootstrap": "^5.1.3",
     "bootstrap-icons": "^1.8.3",
+    "crypto-browserify": "^3.12.0",
     "firebase": "^9.8.3",
     "jquery": "^3.6.0",
     "moment": "^2.29.4",

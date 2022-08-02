@@ -1,21 +1,18 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import '../index.css'
 
 const Pemulihan = () => {
-
-
     return (
         <div className="container">
             <div className="row">
-                <div className="col-12 align-item-center d-flex justify-content-center" style={{marginTop:'15vh'}}>
+                <div className="col-12 align-item-center d-flex justify-content-center" style={{ marginTop: '15vh' }}>
                     <h1 className="title">Pemulihan</h1>
                 </div>
             </div>
             <div className="row">
                 <div className="col-12 align-item-center ">
-                    <h5 className="text-center margintop">Silahkan berikan pertanyaan dan jawaban Anda<br/>
-                                                        jika Anda lupa password.
+                    <h5 className="text-center margintop">Silahkan berikan pertanyaan dan jawaban Anda<br />
+                        jika Anda lupa password.
                     </h5>
                 </div>
             </div>
@@ -29,10 +26,10 @@ const Pemulihan = () => {
             <div className="row d-flex justify-content-center">
                 <form className="form-inline d-flex justify-content-center">
                     <select className="custom-select custom-select-lg my-1 mr-sm-2" data-width="100%" id="inlineFormCustomSelectPref">
-                        <option selected>Pilih Pertanyaan Pemulihan</option>
-                        <option value="1">Siapa Nama Sahabat Terbaikmu</option>
-                        <option value="2">Apa nama Binatang Peliharaan Mu</option>
-                        <option value="3">Apa Pelajaran yang paling kamu sukai</option>
+                        <option selected>Pilih pertanyaan pemulihan</option>
+                        <option value="1">Siapa nama sahabat terbaikmu?</option>
+                        <option value="2">Apa nama binatang peliharaanmu?</option>
+                        <option value="3">Apa pelajaran yang paling kamu sukai?</option>
                     </select>
                 </form>
                 <div className="col-4">

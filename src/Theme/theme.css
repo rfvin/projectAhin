@@ -31,33 +31,9 @@ i {
 
 /* Table */
 .table-wrapper {
-    max-height: 60vh;
+    height: 58vh;
     overflow: auto;
     display: inline-block;
-}
-
-/* Toast */
-.toast-update,
-.toast-tambah,
-.toast-hapus {
-    background: #007AFF;
-    padding: 20px;
-    text-align: center;
-    width: max-content;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #007AFF;
-}
-
-.toast-tambah {
-    background: #34C759;
-}
-
-.toast-hapus {
-    background: #FF3B30;
 }
 
 /* Sidebar */
@@ -135,12 +111,7 @@ i {
     color: #8e8e93;
 }
 
-.margintop {
-    margin-top: 80px;
-}
-
 /* CSS Modal */
-
 .modal-header,
 .modal-title {
     background-color: #007AFF;
@@ -149,13 +120,13 @@ i {
 }
 
 #topHomeNav{
-    border-bottom: black solid 1px;
+    border-bottom: lightgrey solid 1px;
 }
 
 .topHomeNavActive{
     font-weight: bold;
     text-decoration: none;
-    border-bottom:#007AFF ;
+    border-bottom:#007AFF solid 5px ;
     cursor: pointer;
     background: #fff;
 }
